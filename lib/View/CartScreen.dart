@@ -45,6 +45,12 @@ class CartScreen extends StatelessWidget {
                          },
                         child: Column(
                           children: [
+
+                            Container(),
+                            Container(),
+                            Container(),
+                            Container(),
+                            Container(),
                             FoodWidgetCart(controller.Cart[index]),
                             SizedBox(height: 17.h,),
                           ],
