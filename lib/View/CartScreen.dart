@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../Model/Widgets/FoodCartWidget.dart';
 import '../Model/Widgets/buttonWidget.dart';
+import 'ConfirmeCartScreen.dart';
 
 class CartScreen extends StatelessWidget {
    CartScreen({Key? key}) : super(key: key);
@@ -57,7 +58,7 @@ class CartScreen extends StatelessWidget {
 
                 ),
                 SizedBox(height: 22.h,),
-                button('Continuer',()=>Get.to(OnBoardingScreen())),
+                button('Continuer',()=>Get.to(ConfirmCartScreen())),
                 SizedBox(height: 10.h,)
 
 

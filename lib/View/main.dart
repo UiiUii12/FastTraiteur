@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
                   ),
                   initialRoute: 'OnBoarding',
                   routes: {
-                    '/' : (contexte)=>CartScreen() ,
+                    '/' : (contexte)=>OnBoardingScreen() ,
                   },
 
 

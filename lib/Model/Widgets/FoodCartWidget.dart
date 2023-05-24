@@ -5,7 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../Classes/Food.dart';
 
 Widget FoodWidgetCart(Food food){
-  return Container(
+  return
+    Container(
     height: 116.h,
     width:332.w ,
     decoration: BoxDecoration(

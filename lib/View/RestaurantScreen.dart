@@ -13,14 +13,12 @@ import '../Model/Classes/Restaurant.dart';
 class RestaurantScreen extends StatelessWidget {
   final String image;
   final String name;
-  List<Category> category;
   final String adress;
 
   RestaurantScreen({
     Key? key,
     required this.image,
     required this.name,
-    required this.category,
     required this.adress,
   }) : super(key: key);
 
@@ -125,24 +123,110 @@ class RestaurantScreen extends StatelessWidget {
           ),
           Row(children: [
             SizedBox(width: 15.w),
-            TabBar(
-              controller: controller.tabController,
-              physics: BouncingScrollPhysics(),
-              labelColor: Color(0XFFFFFFFF),
-              //labelStyle: theme().textTheme.headline4,
-              //unselectedLabelStyle: theme().textTheme.headline4,
-              indicator: UnderlineTabIndicator(
-                  borderSide: BorderSide(
-                      width: 2.h, color: Color(0xffE6424B)),
-                  insets: EdgeInsets.only(
-                    left: 0,
-                    right: 30.w,
-                  )),
-              unselectedLabelColor: Colors.black,
-              isScrollable: true,
-              labelPadding:
-              EdgeInsets.only(left: 0, right: 30.w),
-              tabs: controller.tabs(category),
+            Expanded(
+              child: TabBar(
+                  controller: controller.tabController,
+                  physics: BouncingScrollPhysics(),
+
+                  indicator: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14.r) ,
+                      color :Color(0xffFF9900)
+                  ),
+                  indicatorSize: TabBarIndicatorSize.label,
+                  labelColor: Colors.white,
+                  unselectedLabelColor: Color(0xff303030),
+                  isScrollable: true,
+                  tabs:[
+                    Container(
+                      height:38.h ,
+                      width: 66.w,
+                      decoration:BoxDecoration(
+                        borderRadius: BorderRadius.circular(14.r) ,
+                      ),
+                      child: Center(
+                        child: AutoSizeText("Tous",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14.sp ,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height:38.h,
+                      width: 104.w,
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      decoration:BoxDecoration(
+
+                          borderRadius: BorderRadius.circular(14.r)
+                      ),
+                      child: Row(
+
+                        children: [
+
+                          SvgPicture.asset("Asset/Images/pizzaIcon.svg" ) ,
+
+                          SizedBox(width: 10.w,),
+                          AutoSizeText("Pizza",
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height:38.h,
+                      width: 104.w,
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      decoration:BoxDecoration(
+                          color:  Colors.white,
+                          borderRadius: BorderRadius.circular(14.r)
+                      ),
+                      child: Row(
+                        children: [
+
+                          SvgPicture.asset("Asset/Images/burgerIcon.svg" ,height:25.h , width : 25.w) ,
+
+                          SizedBox(width: 10.w,),
+                          AutoSizeText("Burger",
+                            style: TextStyle(
+                              fontSize: 14.sp ,
+                              fontWeight: FontWeight.w400,
+
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height:38.h,
+                      width: 104.w,
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      decoration:BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(14.r)
+                      ),
+                      child: Row(
+                        children: [
+
+                          SvgPicture.asset("Asset/Images/burgerIcon.svg" ,width :25.w , height :25.h) ,
+
+                          SizedBox(width: 10.w,),
+                          AutoSizeText("Burger",
+                            style: TextStyle(
+                              fontSize: 14.sp ,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+
+                  ]
+              ),
             ),
           ]),
          /* Expanded(
@@ -211,40 +295,49 @@ class RestaurantScreen extends StatelessWidget {
           ),*/
          SizedBox(height: 24.h,),
           Expanded(
-            child: ListView.builder(
-                itemCount:controller.plats.length,
-                physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                itemBuilder:(context,index) {
-                  return  Row(
+            child: TabBarView(
+              controller: controller.tabController,
+              children: [
+              GetBuilder<RestaurantController>(
+                builder: (controller) {
+                  return ListView.builder(
+                      itemCount:controller.plats.length,
+                      physics: BouncingScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      itemBuilder:(context,index) {
+                        return (index % 2 == 0)
+                            ? Row(
 
-                    children: [
-                      SizedBox(width: 23.w,),
-                      Column(
-                        children: [
-                          FoodWidget(
-                             controller.plats[index].image,
-                             controller.plats[index].name,
-                             controller.plats[index].price,),
-                          SizedBox(height:17.h ,),
-                        ],
-                      ),
-                      SizedBox(width: 17.w,),
-                      index+1<controller.plats.length?
-                      Column(
-                        children: [
-                          FoodWidget(
-                               controller.plats[index+1].image,
-                               controller.plats[index+1].name,
-                               controller.plats[index+1].price,
-                          ),
-                          SizedBox(height:17.h ,),
-                        ],
-                      ):Container(),
+                          children: [
+                            SizedBox(width: 23.w,),
+                            Column(
+                              children: [
+                                FoodWidget(
+                                  "Asset/Images/burger.jpg",
+                                   controller.plats[index].nom,
+                                   controller.plats[index].prix,),
+                                SizedBox(height:17.h ,),
+                              ],
+                            ),
+                            SizedBox(width: 17.w,),
+                            index+1<controller.plats.length?
+                            Column(
+                              children: [
+                                FoodWidget(
+                                  "Asset/Images/burger2.jpg" ,
+                                     controller.plats[index+1].nom,
+                                     controller.plats[index+1].prix,
+                                ),
+                                SizedBox(height:17.h ,),
+                              ],
+                            ):Container(),
 
-                    ],
+                          ],
+                        ): Container();
+                      }
                   );
                 }
+              ), ]
             ),
           )
         ]));
