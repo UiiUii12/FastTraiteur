@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../Model/Widgets/FoodCartWidget.dart';
 import '../Model/Widgets/buttonWidget.dart';
+import 'SupplementsScreen.dart';
 
 class CartScreen extends StatelessWidget {
    CartScreen({Key? key}) : super(key: key);
@@ -18,11 +19,25 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0XFFF3F3F3),
+      appBar: PreferredSize(
+        preferredSize:Size.fromHeight(70.h),
+        child: AppBar(
+          title: AutoSizeText('Mon Panier'),
+          backgroundColor: Color(0XFF272727),
+          elevation: 0,
+          leading: IconButton(
+            icon: SvgPicture.asset('Asset/Images/BackIcon.svg'),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          centerTitle: true,
+        ),
+      ),
       body:
           SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Column(
               children: [
+                SizedBox(height: 24.h,),
                 ListView.builder(
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
@@ -50,14 +65,14 @@ class CartScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      index==controller.Cart.length-1?
+                      index==controller.Cart.length-1 && controller.Cart.length!=0?
                       InvoiceWidget(1550, 250,1750):Container()
                     ],
                   ),
 
                 ),
                 SizedBox(height: 22.h,),
-                button('Continuer',()=>Get.to(OnBoardingScreen())),
+                button('Continuer',()=>Get.to(SupplementsScreen())),
                 SizedBox(height: 10.h,)
 
 
