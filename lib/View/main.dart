@@ -1,5 +1,6 @@
 import 'package:fastraiteur/View/CartScreen.dart';
 import 'package:fastraiteur/View/OnBoardingScreen.dart';
+import 'package:fastraiteur/View/SearchScreen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,7 +29,9 @@ class MyApp extends StatelessWidget {
                   ),
                   initialRoute: 'OnBoarding',
                   routes: {
-                    '/' : (contexte)=>CartScreen() ,
+
+                    '/' : (contexte)=>OnBoardingScreen() ,
+
                   },
 
 
