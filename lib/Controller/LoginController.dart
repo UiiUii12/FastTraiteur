@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:http/http.dart';
 class LoginController extends GetxController {
   final phoneNumber= new TextEditingController();
   bool submit1=false;
-
   void onClose() {
     phoneNumber.dispose();
     super.onClose();
@@ -35,4 +35,5 @@ class LoginController extends GetxController {
       throw Exception("Mafihaaaaaaaaaaaaaaaaaaaaaaach");
     }
   }
+
 }
