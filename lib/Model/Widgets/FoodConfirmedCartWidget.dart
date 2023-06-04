@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../Classes/Food.dart';
 
-Widget FoodWidgetCart(Food food){
-  return
-    Container(
+Widget FoodConfirmedCartWidget(Food food){
+  return Container(
     height: 116.h,
     width:332.w ,
     decoration: BoxDecoration(
@@ -32,43 +31,25 @@ Widget FoodWidgetCart(Food food){
           children: [
             AutoSizeText(food.name,style: TextStyle(fontSize:16.sp ,fontWeight:FontWeight.w600 ,),),
             Container(
-              width: 114.w,
+                width: 114.w,
                 child: AutoSizeText(food.description,style: TextStyle(fontSize:14.sp ,fontWeight:FontWeight.w400 ,color: Color(0XFF7D7D7D)),)),
             SizedBox(height: 12.h,),
             Row(
               children: [
                 AutoSizeText('${food.price} DA',style: TextStyle(fontSize:16.sp ,fontWeight:FontWeight.w600 ,),),
-                 SizedBox(
-                   height: 30.h,
-                   width: 30.w,
-                   child: FloatingActionButton(
-                       onPressed: (){},
-                       elevation:1,
-                       backgroundColor:Color(0XFFFF9900),
-                       child: Icon(Icons.remove,size: 20.sp,),
-                       shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.all(Radius.circular(10.r))
-                       )),
-
-                 ),
-                 SizedBox(width: 6.sp,),
-                 AutoSizeText('2',style: TextStyle(fontSize:16.sp ,fontWeight:FontWeight.w600 ,),),
-                 SizedBox(width: 6.sp,),
-                 SizedBox(
-                   height: 30.h,
-                   width: 30.w,
-                   child: FloatingActionButton(
-                       onPressed: (){},
-                       elevation:1,
-                       backgroundColor:Color(0XFFFF9900),
-                       child: Icon(Icons.add,size: 20.sp,),
-                       shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.all(Radius.circular(10.r))
-                       )),
-
-                 ),
-              
-                SizedBox(width:11.w ,)
+                Container(
+                    height: 30.h,
+                    width: 30.w,
+                    decoration: BoxDecoration(
+                      color: Color(0XFFFF9900),
+                      borderRadius: BorderRadius.circular(10.r),
+                    ),
+                    child: Center(
+                      child: AutoSizeText(
+                        '2',
+                        style: TextStyle(fontSize:16.sp ,fontWeight:FontWeight.w600 ,color: Colors.white),),
+                    )),
+                SizedBox(width: 11.w,),
               ],
             ),
           ],),
