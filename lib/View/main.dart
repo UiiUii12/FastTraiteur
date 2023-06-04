@@ -29,7 +29,9 @@ class MyApp extends StatelessWidget {
                   ),
                   initialRoute: 'OnBoarding',
                   routes: {
-                    '/' : (contexte)=>SearchScreen() ,
+
+                    '/' : (contexte)=>OnBoardingScreen() ,
+
                   },
 
 
